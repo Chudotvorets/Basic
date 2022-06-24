@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "auto-layout-sugar-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Heads-and-Hands/auto-layout-sugar-ios",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "1b57b50cf4e6b7715634df41a565b6d94637ca3d"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "07c5d1f6044701d97e94dc11157259e8811977be"
+      }
+    }
+  ],
+  "version" : 2
+}
