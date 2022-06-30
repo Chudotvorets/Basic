@@ -13,16 +13,14 @@
 		7E30C55928589550002E05FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E30C55828589550002E05FE /* Assets.xcassets */; };
 		7E30C55C28589550002E05FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E30C55A28589550002E05FE /* LaunchScreen.storyboard */; };
 		7E30C56528589F85002E05FE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7E30C56428589F85002E05FE /* SnapKit */; };
-		7E30C5672858A2AA002E05FE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30C5662858A2AA002E05FE /* Router.swift */; };
-		7E30C56C2858AD17002E05FE /* LoginPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30C56B2858AD17002E05FE /* LoginPresentor.swift */; };
 		7E30C56E2858ADAC002E05FE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30C56D2858ADAC002E05FE /* UserModel.swift */; };
-		7E30C5702858B28F002E05FE /* ModulBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30C56F2858B28F002E05FE /* ModulBuilder.swift */; };
-		7E30C5722858BABA002E05FE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30C5712858BABA002E05FE /* LoginViewController.swift */; };
-		7E30C5742858BB2C002E05FE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30C5732858BB2C002E05FE /* RegistrationViewController.swift */; };
-		7E87A933285BAC1E000C41C6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A932285BAC1E000C41C6 /* ProfileViewController.swift */; };
-		7E87A935285BAD3D000C41C6 /* ProfilePresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A934285BAD3D000C41C6 /* ProfilePresentor.swift */; };
+		7E423F9A286DC4B400F4A396 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7E423F99286DC4B400F4A396 /* Kingfisher */; };
+		7E46C3962866F7D8005D971A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46C3952866F7D8005D971A /* TableViewCell.swift */; };
+		7E46C39C286C6416005D971A /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46C39B286C6416005D971A /* TokenModel.swift */; };
+		7E46C39E286C6529005D971A /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46C39D286C6529005D971A /* Data.swift */; };
+		7E46C3A1286C66DA005D971A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7E46C3A0286C66DA005D971A /* Alamofire */; };
+		7E46C3A3286C69A2005D971A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46C3A2286C69A2005D971A /* LoginViewController.swift */; };
 		7E8C81922858BD3B00922BFC /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C81912858BD3B00922BFC /* UserSettings.swift */; };
-		7E8C81952858C03000922BFC /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C81942858C03000922BFC /* RegistrationPresenter.swift */; };
 		7E8C81982858F53700922BFC /* AutoLayoutSugar in Frameworks */ = {isa = PBXBuildFile; productRef = 7E8C81972858F53700922BFC /* AutoLayoutSugar */; };
 		7E8C819B2858FDD300922BFC /* AutoLayoutSugar in Frameworks */ = {isa = PBXBuildFile; productRef = 7E8C819A2858FDD300922BFC /* AutoLayoutSugar */; };
 		7EAF3AC3285DE75A009E7794 /* CollectionViewPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF3AC2285DE75A009E7794 /* CollectionViewPresentor.swift */; };
@@ -32,7 +30,7 @@
 		7EAF3ACE28605FB3009E7794 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF3ACD28605FB3009E7794 /* CustomTabBar.swift */; };
 		7EC1A500286072D30041A08A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC1A4FF286072D30041A08A /* NetworkService.swift */; };
 		7EC1A5282861C4BF0041A08A /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC1A5272861C4BF0041A08A /* ImageCollectionViewCell.swift */; };
-		7EC1A52A2861C5770041A08A /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC1A5292861C5770041A08A /* CollectionModel.swift */; };
+		7EC1A52A2861C5770041A08A /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC1A5292861C5770041A08A /* PhotoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,16 +41,12 @@
 		7E30C55828589550002E05FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E30C55B28589550002E05FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E30C55D28589550002E05FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E30C5662858A2AA002E05FE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		7E30C56B2858AD17002E05FE /* LoginPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentor.swift; sourceTree = "<group>"; };
 		7E30C56D2858ADAC002E05FE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		7E30C56F2858B28F002E05FE /* ModulBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulBuilder.swift; sourceTree = "<group>"; };
-		7E30C5712858BABA002E05FE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		7E30C5732858BB2C002E05FE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		7E87A932285BAC1E000C41C6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		7E87A934285BAD3D000C41C6 /* ProfilePresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresentor.swift; sourceTree = "<group>"; };
+		7E46C3952866F7D8005D971A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		7E46C39B286C6416005D971A /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
+		7E46C39D286C6529005D971A /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		7E46C3A2286C69A2005D971A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7E8C81912858BD3B00922BFC /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
-		7E8C81942858C03000922BFC /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		7EAF3AC2285DE75A009E7794 /* CollectionViewPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewPresentor.swift; sourceTree = "<group>"; };
 		7EAF3AC4285DE778009E7794 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		7EAF3AC7285DE7B6009E7794 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +54,7 @@
 		7EAF3ACD28605FB3009E7794 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		7EC1A4FF286072D30041A08A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7EC1A5272861C4BF0041A08A /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		7EC1A5292861C5770041A08A /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModel.swift; sourceTree = "<group>"; };
+		7EC1A5292861C5770041A08A /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +63,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E8C81982858F53700922BFC /* AutoLayoutSugar in Frameworks */,
+				7E46C3A1286C66DA005D971A /* Alamofire in Frameworks */,
 				7E8C819B2858FDD300922BFC /* AutoLayoutSugar in Frameworks */,
 				7E30C56528589F85002E05FE /* SnapKit in Frameworks */,
+				7E423F9A286DC4B400F4A396 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,14 +97,11 @@
 				7E30C5512858954C002E05FE /* SceneDelegate.swift */,
 				7E30C5532858954C002E05FE /* WelcomeScreenViewController.swift */,
 				7EAF3ACD28605FB3009E7794 /* CustomTabBar.swift */,
-				7E46C39428633D70005D971A /* ModulBuilder */,
-				7E46C39328633D65005D971A /* Router */,
+				7E46C39D286C6529005D971A /* Data.swift */,
+				7E46C39A286C63B7005D971A /* Model */,
 				7EAF3AC6285DE77F009E7794 /* TableModule */,
 				7EAF3AC1285DE64D009E7794 /* CollectionModule */,
-				7E87A931285BAB56000C41C6 /* ProfileModule */,
 				7E8C819C2859C0FB00922BFC /* UserDefaults */,
-				7E8C81932858BF2400922BFC /* RegistrationModule */,
-				7E30C5682858ACA8002E05FE /* LoginModule */,
 				7E30C55828589550002E05FE /* Assets.xcassets */,
 				7E30C55A28589550002E05FE /* LaunchScreen.storyboard */,
 				7E30C55D28589550002E05FE /* Info.plist */,
@@ -116,47 +109,21 @@
 			path = "Basic project";
 			sourceTree = "<group>";
 		};
-		7E30C5682858ACA8002E05FE /* LoginModule */ = {
+		7E46C39A286C63B7005D971A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7E30C5712858BABA002E05FE /* LoginViewController.swift */,
-				7E30C56B2858AD17002E05FE /* LoginPresentor.swift */,
+				7EC1A5292861C5770041A08A /* PhotoModel.swift */,
+				7E46C39B286C6416005D971A /* TokenModel.swift */,
 			);
-			path = LoginModule;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		7E46C39328633D65005D971A /* Router */ = {
+		7E46C3A4286C7293005D971A /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7E30C5662858A2AA002E05FE /* Router.swift */,
+				7E46C3A2286C69A2005D971A /* LoginViewController.swift */,
 			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		7E46C39428633D70005D971A /* ModulBuilder */ = {
-			isa = PBXGroup;
-			children = (
-				7E30C56F2858B28F002E05FE /* ModulBuilder.swift */,
-			);
-			path = ModulBuilder;
-			sourceTree = "<group>";
-		};
-		7E87A931285BAB56000C41C6 /* ProfileModule */ = {
-			isa = PBXGroup;
-			children = (
-				7E87A932285BAC1E000C41C6 /* ProfileViewController.swift */,
-				7E87A934285BAD3D000C41C6 /* ProfilePresentor.swift */,
-			);
-			path = ProfileModule;
-			sourceTree = "<group>";
-		};
-		7E8C81932858BF2400922BFC /* RegistrationModule */ = {
-			isa = PBXGroup;
-			children = (
-				7E30C5732858BB2C002E05FE /* RegistrationViewController.swift */,
-				7E8C81942858C03000922BFC /* RegistrationPresenter.swift */,
-			);
-			path = RegistrationModule;
+			path = LoginViewController;
 			sourceTree = "<group>";
 		};
 		7E8C819C2859C0FB00922BFC /* UserDefaults */ = {
@@ -164,6 +131,7 @@
 			children = (
 				7E30C56D2858ADAC002E05FE /* UserModel.swift */,
 				7E8C81912858BD3B00922BFC /* UserSettings.swift */,
+				7E46C3A4286C7293005D971A /* LoginViewController */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -174,7 +142,6 @@
 				7EAF3AC2285DE75A009E7794 /* CollectionViewPresentor.swift */,
 				7EAF3AC4285DE778009E7794 /* CollectionViewController.swift */,
 				7EC1A5272861C4BF0041A08A /* ImageCollectionViewCell.swift */,
-				7EC1A5292861C5770041A08A /* CollectionModel.swift */,
 			);
 			path = CollectionModule;
 			sourceTree = "<group>";
@@ -184,6 +151,7 @@
 			children = (
 				7EAF3AC9285DE7F3009E7794 /* TableViewPresentor.swift */,
 				7EAF3AC7285DE7B6009E7794 /* TableViewController.swift */,
+				7E46C3952866F7D8005D971A /* TableViewCell.swift */,
 			);
 			path = TableModule;
 			sourceTree = "<group>";
@@ -216,6 +184,8 @@
 				7E30C56428589F85002E05FE /* SnapKit */,
 				7E8C81972858F53700922BFC /* AutoLayoutSugar */,
 				7E8C819A2858FDD300922BFC /* AutoLayoutSugar */,
+				7E46C3A0286C66DA005D971A /* Alamofire */,
+				7E423F99286DC4B400F4A396 /* Kingfisher */,
 			);
 			productName = "Basic project";
 			productReference = 7E30C54C2858954C002E05FE /* Basic project.app */;
@@ -249,6 +219,8 @@
 				7E30C56328589F85002E05FE /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7E8C81962858F53700922BFC /* XCRemoteSwiftPackageReference "auto-layout-sugar-ios" */,
 				7E8C81992858FDD300922BFC /* XCRemoteSwiftPackageReference "auto-layout-sugar-ios" */,
+				7E46C39F286C66DA005D971A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				7E423F98286DC4B400F4A396 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 7E30C54D2858954C002E05FE /* Products */;
 			projectDirPath = "";
@@ -276,27 +248,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E30C5672858A2AA002E05FE /* Router.swift in Sources */,
 				7EAF3AC8285DE7B6009E7794 /* TableViewController.swift in Sources */,
 				7E30C56E2858ADAC002E05FE /* UserModel.swift in Sources */,
+				7E46C3A3286C69A2005D971A /* LoginViewController.swift in Sources */,
 				7E30C5542858954C002E05FE /* WelcomeScreenViewController.swift in Sources */,
 				7EAF3AC5285DE778009E7794 /* CollectionViewController.swift in Sources */,
 				7EAF3AC3285DE75A009E7794 /* CollectionViewPresentor.swift in Sources */,
 				7EC1A5282861C4BF0041A08A /* ImageCollectionViewCell.swift in Sources */,
 				7EAF3ACA285DE7F3009E7794 /* TableViewPresentor.swift in Sources */,
 				7E8C81922858BD3B00922BFC /* UserSettings.swift in Sources */,
-				7E30C5722858BABA002E05FE /* LoginViewController.swift in Sources */,
 				7EC1A500286072D30041A08A /* NetworkService.swift in Sources */,
-				7E30C5742858BB2C002E05FE /* RegistrationViewController.swift in Sources */,
-				7E87A933285BAC1E000C41C6 /* ProfileViewController.swift in Sources */,
-				7E87A935285BAD3D000C41C6 /* ProfilePresentor.swift in Sources */,
-				7E30C56C2858AD17002E05FE /* LoginPresentor.swift in Sources */,
-				7E30C5702858B28F002E05FE /* ModulBuilder.swift in Sources */,
 				7EAF3ACE28605FB3009E7794 /* CustomTabBar.swift in Sources */,
-				7EC1A52A2861C5770041A08A /* CollectionModel.swift in Sources */,
+				7E46C39E286C6529005D971A /* Data.swift in Sources */,
+				7E46C3962866F7D8005D971A /* TableViewCell.swift in Sources */,
+				7E46C39C286C6416005D971A /* TokenModel.swift in Sources */,
+				7EC1A52A2861C5770041A08A /* PhotoModel.swift in Sources */,
 				7E30C5502858954C002E05FE /* AppDelegate.swift in Sources */,
 				7E30C5522858954C002E05FE /* SceneDelegate.swift in Sources */,
-				7E8C81952858C03000922BFC /* RegistrationPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +482,22 @@
 				kind = branch;
 			};
 		};
+		7E423F98286DC4B400F4A396 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		7E46C39F286C66DA005D971A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		7E8C81962858F53700922BFC /* XCRemoteSwiftPackageReference "auto-layout-sugar-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Heads-and-Hands/auto-layout-sugar-ios";
@@ -537,6 +521,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7E30C56328589F85002E05FE /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		7E423F99286DC4B400F4A396 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E423F98286DC4B400F4A396 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		7E46C3A0286C66DA005D971A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E46C39F286C66DA005D971A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		7E8C81972858F53700922BFC /* AutoLayoutSugar */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -22,23 +22,22 @@ class CustomTabBar: UITabBarController {
         super.viewWillAppear(animated)
     }
     
+    
     private func settingTabBar() {
         tabBar.backgroundColor = .white
         
         
+        let tableViewController = TableViewPresentor()
+        let tableViewNavigationController = UINavigationController(rootViewController: TableViewController(presentor: tableViewController))
+        
         let collectionViewPresentor = CollectionViewPresentor()
         let collectionViewNavigationController = UINavigationController(rootViewController: CollectionViewController(presentor: collectionViewPresentor))
         
-        let tableViewController = TableViewPresentor()
-        let tableViewNavigationController = UINavigationController(rootViewController: TableViewCotroller(presentor: tableViewController))
         
-        let profileViewPresentor = ProfileViewPresentor()
-        let profileViewNavigationController = UINavigationController(rootViewController: ProfileViewController(presentor: profileViewPresentor))
+        viewControllers = [tableViewNavigationController, collectionViewNavigationController]
         
-        viewControllers = [collectionViewNavigationController, tableViewNavigationController, profileViewNavigationController]
+        tableViewNavigationController.tabBarItem = UITabBarItem.init(title: "Photo", image: .init(systemName: "photo"), tag: 0)
+        collectionViewNavigationController.tabBarItem = UITabBarItem.init(title: "Favorites", image: .init(systemName: "star"), tag: 1)
         
-        collectionViewNavigationController.tabBarItem = UITabBarItem.init(title: "Collection", image: .init(systemName: "tablecells"), tag: 0)
-        tableViewNavigationController.tabBarItem = UITabBarItem.init(title: "Table", image: .init(systemName: "doc.plaintext"), tag: 1)
-        profileViewNavigationController.tabBarItem = UITabBarItem.init(title: "Profile", image: .init(systemName: "person.crop.circle.fill"), tag: 2)
     }
 }

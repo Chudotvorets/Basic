@@ -10,7 +10,6 @@ import UIKit
 
 protocol CollectionViewProtocol: AnyObject {
     func configureCollectionView()
-    func configureSerachBar()
     func collectionViewReloadData()
 }
 
@@ -29,37 +28,39 @@ class CollectionViewPresentor: CollectionPresentorProtocol {
     weak var view: CollectionViewProtocol?
 
     var service = NetworkService()
+
     
     
     func emptyModel() {
-        CollectionModel.results = []
+       // PhotoModel.results = []
     }
     
     func fetchPhoto(request: String) {
-        service.fetchPhotos(query: request, completion: {
-            self.view?.collectionViewReloadData()
-        })
+//        service.fetchPhotos(query: request, completion: {
+//            self.view?.collectionViewReloadData()
+        //})
             
     }
     
     
     func numberOfRowsInSection() -> Int {
-        return CollectionModel.results.count
-        
+       return 0//model?.results.count
     }
     
     func cellForItemAt(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let imageURLString = CollectionModel.results[indexPath.row].urls.regular
+        //let imageURLString = PhotoModel.results[indexPath.row].urls.regular
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as? ImageCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(with: imageURLString )
+        
+        //cell.configure(with: imageURLString )
         return cell
     }
     
     func didSelectItemAt(indexPath: IndexPath, _ navigationController: UINavigationController) {
         
+        }
     }
-}
+

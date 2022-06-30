@@ -7,33 +7,51 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
    final class NetworkService {
     
     
-    func fetchPhotos(query: String, completion: @escaping () -> Void) {
-    let urlString = "https://api.unsplash.com/search/photos?page=1&per_page=50&query=\(query)&client_id=4FkCYf8xTUfdzd25RxI3tJd986VAPZbAOQ6yWfx0u7w"
+    func fetchPhotos(_ completion: @escaping ([Result]) -> Void) {
     
-    guard let url = URL(string: urlString) else {
-        return
-    }
-    let task = URLSession.shared.dataTask(with: url) { data, _, error in
-        guard let data = data, error == nil else {
-            return
-        }
-        
-        do {
-            let jsonResult = try JSONDecoder().decode(CollectionModel.APIRespocse.self, from: data)
-            DispatchQueue.main.async {
-                CollectionModel.results = jsonResult.results
-                completion()
+        AF.request("https://api.unsplash.com/search/photos?page=1&per_page=20&query=perfectionism&client_id=\(Data.clientID)", method: .get).response { data in
+            switch data.result {
+            case .success(let data):
+                if let data = data {
+                    if let result = try? JSONDecoder().decode(PhotoModel.self, from: data) {
+                        print(result.results)
+                        completion(result.results)
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-            
-        }
-        catch {
-            print("Got data!")
         }
     }
-    task.resume()
+    
+
+func getTocken(code: String, completion: @escaping (Token) -> Void) {
+    
+    let parameters: [String: Any] = [
+        "client_id": Data.clientID,
+        "client_secret": Data.clientSecret,
+        "redirect_uri": Data.redirectURL,
+        "code": "\(code)",
+        "grant_type": Data.authorizationCode
+    ]
+    
+    AF.request("https://unsplash.com/oauth/token", method: .post, parameters: parameters).response { data in
+        switch data.result {
+        case .success(let data):
+            if let data = data {
+                if let result = try? JSONDecoder().decode(Token.self, from: data) {
+                    completion(result)
+                }
+            }
+        case .failure(let error):
+            print(error.localizedDescription)
+                }
+            }
+        }
     }
-}
+   
