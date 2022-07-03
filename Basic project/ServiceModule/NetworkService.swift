@@ -32,7 +32,7 @@ import Alamofire
 
 func getTocken(code: String, completion: @escaping (Token) -> Void) {
     
-    let parameters: [String: Any] = [
+    let options: [String: Any] = [
         "client_id": UserData.clientID,
         "client_secret": UserData.clientSecret,
         "redirect_uri": UserData.redirectURL,
@@ -40,7 +40,7 @@ func getTocken(code: String, completion: @escaping (Token) -> Void) {
         "grant_type": UserData.authorizationCode
     ]
     
-    AF.request("https://unsplash.com/oauth/token", method: .post, parameters: parameters).response { data in
+    AF.request("https://unsplash.com/oauth/token", method: .post, parameters: options).response { data in
         switch data.result {
         case .success(let data):
             if let data = data {
