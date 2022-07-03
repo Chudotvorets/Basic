@@ -63,7 +63,12 @@ class TableViewCell: UITableViewCell {
     //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String? ) {
         super.init(style: style, reuseIdentifier: reuseIdentifier )
-        configureCell()
+        
+        configurePhotoImage()
+        configureFirstName()
+        configureLastName()
+        configureFavoritesButton()
+        
         accessoryView = favouritesButton
 
         selectionStyle = .none
@@ -81,17 +86,11 @@ class TableViewCell: UITableViewCell {
         favouritesButton.tintColor = .gray
     }
     
-    func setContent() {
+    func addContent() {
         firstName.text = (self.model?.firstName ?? "") + " " + (self.model?.lastName ?? "")
         self.photoImageView.kf.setImage(with: URL(string: model?.photo  ?? ""), placeholder: nil)
     }
     
-    private func configureCell() {
-        configurePhotoImage()
-        configureFirstName()
-        configureLastName()
-        configureFavoritesButton()
-    }
     
     private func configurePhotoImage() {
         addSubview(photoImageView)

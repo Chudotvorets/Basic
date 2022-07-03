@@ -13,27 +13,27 @@ protocol TableViewProtocol: AnyObject {
     func tableViewReloadData()
     
 }
-
 protocol TablePresentorProtocol: AnyObject {
+    
     var view: TableViewProtocol? { get set }
     func viewDidLoad()
     func numberOfRowsInSection() -> Int
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     func pressingTheFavoritesButton(isSelected: Bool, model: TableModel)
-    func search(searchText: String)
+    func dataSearch(searchText: String)
     
 }
 
 class TableViewPresentor: TablePresentorProtocol, TableViewCellProtocol {
 
-  
     private var model: [ReceivedData] = []
     private var filterModel: [ReceivedData] = []
     weak var view: TableViewProtocol?
     private var service = NetworkService()
     private var isSearching = false
     private var pageCount = 2
-        
+//MARK: - methods
+    
     func viewDidLoad() {
         downloadData()
     }
@@ -70,7 +70,7 @@ class TableViewPresentor: TablePresentorProtocol, TableViewCellProtocol {
             }
         }
         
-        cell.setContent()
+        cell.addContent()
         return cell
     }
 
@@ -84,7 +84,7 @@ class TableViewPresentor: TablePresentorProtocol, TableViewCellProtocol {
     }
     
     
-    func search(searchText: String) {
+    func dataSearch(searchText: String) {
         self.filterModel.removeAll()
         guard searchText.isEmpty || searchText != " " else {
             return

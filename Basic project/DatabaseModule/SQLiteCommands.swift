@@ -17,7 +17,7 @@ class SQLiteCommands {
     static let photo = Expression<Data>("photo")
     
     static func createTable() {
-        guard let database = SQLiteDatabase.shared.database else {
+        guard let database = SQLiteDatabase.general.database else {
             print("Datastore connection error")
             return
         }
@@ -35,7 +35,7 @@ class SQLiteCommands {
     }
     
     static func insertRow(_ profileValues: DatabaseModel) -> Bool? {
-        guard let database = SQLiteDatabase.shared.database else {
+        guard let database = SQLiteDatabase.general.database else {
             print("Datasource connection error")
             return nil
         }
@@ -53,7 +53,7 @@ class SQLiteCommands {
     }
     
     static func presentRows() -> [DatabaseModel]? {
-        guard let database = SQLiteDatabase.shared.database else {
+        guard let database = SQLiteDatabase.general.database else {
             print("Database connection error")
             return nil
         }
@@ -83,7 +83,7 @@ class SQLiteCommands {
     }
     
     static func deleteRow(profileId: String) {
-        guard let database = SQLiteDatabase.shared.database else {
+        guard let database = SQLiteDatabase.general.database else {
             print("Datastore connection  error")
             return
         }

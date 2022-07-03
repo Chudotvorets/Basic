@@ -10,7 +10,7 @@ import SQLite
 
 class SQLiteDatabase {
     
-    static let shared = SQLiteDatabase()
+    static let general = SQLiteDatabase()
     var database: Connection?
     
     init() {

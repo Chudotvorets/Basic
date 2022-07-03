@@ -28,6 +28,7 @@ class TableViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+//MARK: - lifecycle
     override func viewDidLoad() {
             super.viewDidLoad()
             presenter.view = self
@@ -43,7 +44,7 @@ class TableViewController: UIViewController {
          tableViewReloadData()
     }
     
-    //MARK: - constraints
+//MARK: - constraints
     
     private func settingTableView() {
         view.addSubview(tableView)
@@ -62,6 +63,7 @@ class TableViewController: UIViewController {
         navigationItem.searchController = searchController
     }
 }
+//MARK: - extensions
 
 extension TableViewController: TableViewProtocol {
     
@@ -73,7 +75,6 @@ extension TableViewController: TableViewProtocol {
     }
 }
 
-      //MARK: - UITableViewDataSource
 extension TableViewController: UITableViewDataSource {
     
     
@@ -87,13 +88,12 @@ extension TableViewController: UITableViewDataSource {
     
 }
 
-//MARK: - UISearchBarDelegate
 extension TableViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.presenter.search(searchText: searchText)
+            self.presenter.dataSearch(searchText: searchText)
         }
     }
 }

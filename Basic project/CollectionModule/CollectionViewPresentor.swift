@@ -64,7 +64,7 @@ class CollectionViewPresentor: CollectionPresentorProtocol, CollectionViewCellPr
     }
     
     private func createTable() {
-        let database = SQLiteDatabase.shared
+        let database = SQLiteDatabase.general
         database.createTable()
     }
     
