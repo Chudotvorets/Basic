@@ -12,9 +12,9 @@ import Alamofire
    final class NetworkService {
     
     
-    func fetchPhotos(_ completion: @escaping ([Result]) -> Void) {
+    func getData(_ completion: @escaping ([ReceivedData]) -> Void) {
     
-        AF.request("https://api.unsplash.com/search/photos?page=1&per_page=20&query=perfectionism&client_id=\(Data.clientID)", method: .get).response { data in
+        AF.request("https://api.unsplash.com/search/photos?page=1&per_page=30&query=apple&client_id=\(UserData.clientID)", method: .get).response { data in
             switch data.result {
             case .success(let data):
                 if let data = data {
@@ -33,11 +33,11 @@ import Alamofire
 func getTocken(code: String, completion: @escaping (Token) -> Void) {
     
     let parameters: [String: Any] = [
-        "client_id": Data.clientID,
-        "client_secret": Data.clientSecret,
-        "redirect_uri": Data.redirectURL,
+        "client_id": UserData.clientID,
+        "client_secret": UserData.clientSecret,
+        "redirect_uri": UserData.redirectURL,
         "code": "\(code)",
-        "grant_type": Data.authorizationCode
+        "grant_type": UserData.authorizationCode
     ]
     
     AF.request("https://unsplash.com/oauth/token", method: .post, parameters: parameters).response { data in

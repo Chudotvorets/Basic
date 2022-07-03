@@ -9,21 +9,20 @@ import Foundation
 import UIKit
 import SnapKit
 
-final class CollectionViewController: UIViewController, CollectionViewProtocol {
+final class CollectionViewController: UIViewController {
    
     var presentor: CollectionPresentorProtocol
     
     
     private lazy var imageCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = CGSize(width: view.frame.size.width/1.1, height: view.frame.size.height/5)
+        let layoutImage = UICollectionViewFlowLayout()
+        layoutImage.scrollDirection = .vertical
+       
+        layoutImage.itemSize = CGSize(width: view.frame.size.width/2.1, height: view.frame.size.height/4)
         
-        let imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        imageCollectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
-        imageCollectionView.backgroundColor = .systemBackground
+        let imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutImage)
+        imageCollectionView.register(FavoritesCollectionViewCell.self, forCellWithReuseIdentifier: FavoritesCollectionViewCell.identifier)
+        imageCollectionView.dataSource = self
         return imageCollectionView
     }()
     
@@ -40,15 +39,16 @@ final class CollectionViewController: UIViewController, CollectionViewProtocol {
     override func viewDidLoad() {
             super.viewDidLoad()
         presentor.view = self
+        presentor.viewDidLoad()
         configureCollectionView()
         view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden = true
+       
         
     }
     
     //MARK: - constraints
     
-    internal func configureCollectionView() {
+    private func configureCollectionView() {
         view.addSubview(imageCollectionView)
         imageCollectionView.dataSource = self
         imageCollectionView.snp.makeConstraints { make in
@@ -58,17 +58,25 @@ final class CollectionViewController: UIViewController, CollectionViewProtocol {
     }
     
     
-    //MARK: - method
-    
-    internal func collectionViewReloadData() {
-        imageCollectionView.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionViewReloadData()
+        presentor.configureModel()
     }
-    
 }
     
    //MARK: - Extensions
 
-    extension CollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+    extension CollectionViewController: CollectionViewProtocol {
+        
+        func collectionViewReloadData() {
+            DispatchQueue.main.async {
+                self.imageCollectionView.reloadData()
+            }
+        }
+    }
+
+    extension CollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             presentor.numberOfRowsInSection()

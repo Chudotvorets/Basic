@@ -7,60 +7,90 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 protocol CollectionViewProtocol: AnyObject {
-    func configureCollectionView()
+    
     func collectionViewReloadData()
+    
 }
 
 protocol CollectionPresentorProtocol: AnyObject {
     var view: CollectionViewProtocol? { get set }
-    func emptyModel()
-    func fetchPhoto(request: String)
+    func viewDidLoad()
     func numberOfRowsInSection() -> Int
     func cellForItemAt(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    func didSelectItemAt(indexPath: IndexPath, _ navigationController: UINavigationController)
+    func updateModel(completion: @escaping ([CollectionModel]) -> Void)
+    func configureModel()
 }
 
-class CollectionViewPresentor: CollectionPresentorProtocol {
+class CollectionViewPresentor: CollectionPresentorProtocol, CollectionViewCellProtocol {
+   
     
-
     weak var view: CollectionViewProtocol?
-
     var service = NetworkService()
+    var model: [CollectionModel] = []
 
     
-    
-    func emptyModel() {
-       // PhotoModel.results = []
+    func viewDidLoad() {
+        createTable()
     }
-    
-    func fetchPhoto(request: String) {
-//        service.fetchPhotos(query: request, completion: {
-//            self.view?.collectionViewReloadData()
-        //})
-            
-    }
-    
+        
     
     func numberOfRowsInSection() -> Int {
-       return 0//model?.results.count
+        return model.count
     }
     
     func cellForItemAt(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //let imageURLString = PhotoModel.results[indexPath.row].urls.regular
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCollectionViewCell.identifier, for: indexPath) as? FavoritesCollectionViewCell
+        guard let cell = cell else { return UICollectionViewCell() }
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as? ImageCollectionViewCell else {
-            return UICollectionViewCell()
-        }
+        cell.delegate = self
         
-        //cell.configure(with: imageURLString )
+        cell.model = CollectionModel(id: model[indexPath.row].id,
+                                             firstName: model[indexPath.row].firstName,
+                                             lastName: model[indexPath.row].lastName,
+                                             photo: model[indexPath.row].photo)
+        cell.setContent()
         return cell
     }
     
-    func didSelectItemAt(indexPath: IndexPath, _ navigationController: UINavigationController) {
-        
+    func configureModel() {
+        updateModel { [weak self] data in
+            self?.model = data
+            self?.view?.collectionViewReloadData()
         }
     }
+    
+    private func createTable() {
+        let database = SQLiteDatabase.shared
+        database.createTable()
+    }
+    
+     func updateModel(completion: @escaping ([CollectionModel]) -> Void) {
+        
+        let model: [DatabaseModel] = SQLiteCommands.presentRows() ?? []
+        var cellModel: [CollectionModel] = []
+        
+        for x in model {
+            let string = String(decoding: x.photo, as: UTF8.self)
+            cellModel.append(CollectionModel(id: x.id, firstName: x.firstName, lastName: x.lastName, photo: string ))
+        }
+        completion(cellModel)
+    }
+    
+    func deletingTheSelectedCell(model: CollectionModel) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {
+            SQLiteCommands.deleteRow(profileId: model.id)
+            self.updateModel { [weak self] data in
+                self?.model = data
+                self?.view?.collectionViewReloadData()
+            }
+        }
+    }
+}
+
+  
+
 

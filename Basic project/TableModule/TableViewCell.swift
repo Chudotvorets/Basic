@@ -7,28 +7,30 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 protocol TableViewCellProtocol: AnyObject {
-    func didPressTableViewCellFavouritesTutton(isSelected: Bool, model: Result)
+    func pressingTheFavoritesButton(isSelected: Bool, model: TableModel)
 }
 
 class TableViewCell: UITableViewCell {
 
-    var model: Result?
+    var model: TableModel?
     
     weak var delegate: TableViewCellProtocol?
     
     static let identifier = "imageTableViewCell"
     
-    private lazy var favouritesButton: UIButton = {
+    lazy var favouritesButton: UIButton = {
         let favouritesButton = UIButton(type: .system)
         favouritesButton.setImage(UIImage(systemName: "heart.rectangle.fill"), for: .normal)
         favouritesButton.backgroundColor = .clear
+        favouritesButton.tintColor = .gray
         favouritesButton.addTarget(self, action: #selector(favouritesButtonTapped), for: .touchUpInside)
         return favouritesButton
     }()
     
-    private var isSelectedButton = false
+    var isSelectedButton = false
     
     lazy var photoImageView: UIImageView = {
         let photoImageView = UIImageView()
@@ -44,7 +46,6 @@ class TableViewCell: UITableViewCell {
         let firstName = UILabel()
         firstName.textAlignment = .left
         firstName.numberOfLines = 0
-        firstName.text = "label2"
         firstName.font = .systemFont(ofSize: 14)
         firstName.textColor = .black
         return firstName
@@ -54,7 +55,6 @@ class TableViewCell: UITableViewCell {
         let lastName = UILabel()
         lastName.textAlignment = .left
         lastName.numberOfLines = 0
-        lastName.text = "label2"
         lastName.font = .systemFont(ofSize: 14)
         lastName.textColor = .black
         return lastName
@@ -73,16 +73,17 @@ class TableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        photoImageView.frame = contentView.bounds
-//    }
 
-    
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        photoImageView.image = nil
+        isSelectedButton = false
+        favouritesButton.tintColor = .gray
+    }
+    
+    func setContent() {
+        firstName.text = (self.model?.firstName ?? "") + " " + (self.model?.lastName ?? "")
+        self.photoImageView.kf.setImage(with: URL(string: model?.photo  ?? ""), placeholder: nil)
     }
     
     private func configureCell() {
@@ -107,8 +108,8 @@ class TableViewCell: UITableViewCell {
     private func configureFirstName() {
         addSubview(firstName)
         firstName.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(10)
-            make.left.equalToSuperview().inset(100)
+            make.bottom.equalToSuperview().inset(20)
+            make.left.equalToSuperview().inset(60)
         }
     }
     
@@ -116,7 +117,7 @@ class TableViewCell: UITableViewCell {
         addSubview(lastName)
         lastName.snp.makeConstraints { make in
             make.left.equalTo(firstName.snp.right).offset(5)
-            make.bottom.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(20)
             
         }
     }
@@ -125,7 +126,7 @@ class TableViewCell: UITableViewCell {
         favouritesButton.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(10)
             make.bottom.equalToSuperview().inset(10)
-            make.width.equalTo(80)
+            make.width.equalTo(40)
             make.height.equalTo(40)
             
         }
@@ -136,7 +137,7 @@ class TableViewCell: UITableViewCell {
         isSelectedButton.toggle()
         favouritesButton.tintColor = isSelectedButton ? .systemRed : .systemGray
         guard let model = model else { return }
-        delegate?.didPressTableViewCellFavouritesTutton(isSelected: isSelectedButton, model: model)
+        delegate?.pressingTheFavoritesButton(isSelected: isSelectedButton, model: model)
     }
 }
 

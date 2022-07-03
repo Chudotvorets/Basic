@@ -8,16 +8,16 @@
 import Foundation
 
     struct PhotoModel: Decodable {
-        let results: [Result]
+        let results: [ReceivedData]
     }
 
-    struct Result: Decodable {
+    struct ReceivedData: Decodable {
         let id: String?
-        let urls: URLS?
-        let user: User
+        let urls: Urls?
+        let user: User?
     }
 
-    struct URLS: Decodable {
+    struct Urls: Decodable {
         let regular: String?
     }
     

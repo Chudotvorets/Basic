@@ -16,16 +16,9 @@ class CustomTabBar: UITabBarController {
         settingTabBar()
        
     }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.backgroundColor = .white
-        super.viewWillAppear(animated)
-    }
-    
     
     private func settingTabBar() {
         tabBar.backgroundColor = .white
-        
         
         let tableViewController = TableViewPresentor()
         let tableViewNavigationController = UINavigationController(rootViewController: TableViewController(presentor: tableViewController))

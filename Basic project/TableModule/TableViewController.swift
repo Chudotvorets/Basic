@@ -7,20 +7,11 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class TableViewController: UIViewController {
     
     var presenter: TablePresentorProtocol
-    
-
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = "Поиск изображений"
-        searchBar.sizeToFit()
-        searchBar.backgroundColor = .white
-        return searchBar
-    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -40,40 +31,45 @@ class TableViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
             presenter.view = self
+            setupSearchController()
             presenter.viewDidLoad()
             view.backgroundColor = .white
-            configureSerachBar()
-            configureTableView()
-            navigationController?.navigationBar.isHidden = true
-//            self.tableView.estimatedRowHeight = 44.0
-//            self.tableView.rowHeight = UITableView.automaticDimension
+            settingTableView()
+            view.layoutSubviews()
         }
     
+     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         tableViewReloadData()
+    }
+    
     //MARK: - constraints
-    internal func configureSerachBar() {
-        view.addSubview(searchBar)
-        searchBar.delegate = self
-        searchBar.snp.makeConstraints { make in
-            make.height.equalTo(50)
-            make.top.equalToSuperview().inset(100)
-            make.left.right.equalToSuperview()
+    
+    private func settingTableView() {
+        view.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
+    }
+
+    private func setupSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        searchController.isActive = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
     }
 }
 
 extension TableViewController: TableViewProtocol {
     
     
-    func configureTableView() {
-        view.addSubview(tableView)
-        tableView.dataSource = self
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom)
-            make.bottom.left.right.equalToSuperview()
-        }
-    }
-    
-    func reloadData() {
+    func tableViewReloadData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -92,12 +88,6 @@ extension TableViewController: UITableViewDataSource {
         presenter.tableView(tableView, cellForRowAt: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return UITableView.automaticDimension
-
-    }
-
 }
 
 //MARK: - UISearchBarDelegate
@@ -106,7 +96,7 @@ extension TableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.presenter.listSearch(searchText: searchText)
+            self.presenter.search(searchText: searchText)
         }
     }
 }

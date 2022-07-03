@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum Data {
-    static let redirectURL = "https://www.google.com"
+enum UserData {
+    static let redirectURL = "https://acegif.com/wp-content/uploads/loading-33.gif"
     static let clientID = "4FkCYf8xTUfdzd25RxI3tJd986VAPZbAOQ6yWfx0u7w"
     static let clientSecret = "Fr3gwv-P3yNpQbjYVG_NmR6oDxxG7XxG7qS29bbrtzY"
     static let authorizationCode = "authorization_code"
